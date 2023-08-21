@@ -1,14 +1,15 @@
 "use client"
 
 import { useRouter } from "next/navigation";
+import { FormEventHandler } from "react";
 
 export default function Create() {
   const router = useRouter();
   return (
-    <form onSubmit={(e)=>{
+    <form onSubmit={(e: React.FormEvent<HTMLFormElement>)=>{
       e.preventDefault();
-      const title = e.target.title.value;
-      const body = e.target.body.value;
+      const title = e.target.title.value as string;
+      const body = e.target.body.value as string;
       const options = {
         method: 'POST',
         headers: {
@@ -21,6 +22,7 @@ export default function Create() {
       ).then(result => {
         console.log(result);
         const lastid = result.id;
+        router.refresh();
         router.push(`/read/${lastid}`)
       })
     }}>
