@@ -5,6 +5,7 @@ export default function Home() {
    <>
    <h2>Welcome!</h2>
    Hello, Visitor!
+   <img src='/wonwoo.jpeg'></img>
    </>
   )
 }
