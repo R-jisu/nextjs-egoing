@@ -1,10 +1,12 @@
 import React from 'react'
 
-const read = (props) => {
+const read = async (props : {params: {id: number}}) => {
+  const response = await fetch(`http://localhost:9999/topics/${props.params.id}`)
+  const topic = await response.json();
   return (
     <>
-    <div>read</div>
-    <h1>{props.params.id}</h1>
+    <h2>{topic.title}</h2>
+    {topic.body}
     </>
   )
 }
